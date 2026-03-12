@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Gremio Música | Deseo Norteño</title>
+  <style>
+    :root{
+      --bg:#0b0d12;
+      --bg-soft:#121722;
+      --card:#171d29;
+      --gold:#d8a84d;
+      --text:#f5f2ea;
+      --muted:#c9cfdb;
+      --line:rgba(255,255,255,.10);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1180px, 92vw); margin:auto}
+    .hero{
+      min-height:100vh;
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(4,8,14,.55), rgba(4,8,14,.88)),
+        radial-gradient(circle at top, rgba(34,72,116,.55), transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(216,168,77,.16), transparent 22%),
+        linear-gradient(135deg, #09111d 0%, #162033 48%, #0b0d12 100%);
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 10% 90%, rgba(255,255,255,.08) 0 2px, transparent 3px) 0 0/120px 120px,
+        radial-gradient(circle at 90% 15%, rgba(255,255,255,.06) 0 2px, transparent 3px) 0 0/160px 160px;
+      opacity:.35;
+      pointer-events:none;
+    }
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background:rgba(8,10,14,.65);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:14px 0;
+    }
+    .brand{
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:.95rem;
+    }
+    .brand span{color:var(--gold)}
+    .nav-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    .hero-inner{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:40px;
+      align-items:center;
+      min-height:calc(100vh - 72px);
+      padding:48px 0 56px;
+    }
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border:1px solid rgba(216,168,77,.35);
+      background:rgba(216,168,77,.08);
+      border-radius:999px;
+      color:#f0cf89;
+      font-size:.85rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+    h1{
+      margin:0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      line-height:.96;
+      letter-spacing:.01em;
+    }
+    .subhead{
+      font-size: clamp(1rem, 1.8vw, 1.35rem);
+      color:var(--muted);
+      max-width:700px;
+      margin:18px 0 28px;
+    }
+    .cta-row{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:26px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 22px;
+      border-radius:12px;
+      font-weight:700;
+      transition:.2s ease;
+      border:1px solid transparent;
+    }
+    .btn-primary{
+      background:var(--gold);
+      color:#1b1407;
+      box-shadow:0 8px 26px rgba(216,168,77,.20);
+    }
+    .btn-secondary{
+      background:transparent;
+      color:var(--text);
+      border-color:rgba(255,255,255,.18);
+    }
+    .contact-inline{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      color:var(--text);
+      font-size:1rem;
+    }
+    .contact-inline span{
+      color:var(--muted);
+      margin-right:6px;
+    }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:0 30px 60px rgba(0,0,0,.28);
+    }
+    .hero-card .mini{
+      color:#f0cf89;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+      font-size:.85rem;
+      margin-bottom:14px;
+    }
+    .video-box{
+      aspect-ratio:16/10;
+      border-radius:18px;
+      background:
+        linear-gradient(rgba(9,13,19,.25), rgba(9,13,19,.55)),
+        linear-gradient(135deg, #1b2a42 0%, #244b73 40%, #111725 100%);
+      border:1px solid rgba(255,255,255,.08);
+      display:grid;
+      place-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .play{
+      width:84px; height:84px;
+      border-radius:50%;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.25);
+      display:grid; place-items:center;
+      font-size:2rem;
+    }
+    .video-caption{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:14px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    section{
+      padding:84px 0;
+      border-top:1px solid var(--line);
+      background:var(--bg);
+    }
+    .section-alt{background:var(--bg-soft)}
+    .section-title{
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin:0 0 16px;
+    }
+    .section-intro{
+      color:var(--muted);
+      max-width:800px;
+      margin:0 0 34px;
+      font-size:1.05rem;
+    }
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:34px;
+      align-items:start;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:24px;
+    }
+    .list{
+      margin:14px 0 0;
+      padding-left:20px;
+    }
+    .list li{margin:10px 0}
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+    }
+    .grid-4{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:22px;
+    }
+    .sponsor{
+      text-align:center;
+      padding:28px 18px;
+      background:#fff;
+      color:#121212;
+      border-radius:18px;
+      min-height:180px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:10px;
+    }
+    .sponsor h3{
+      margin:0;
+      font-size:2rem;
+      letter-spacing:.06em;
+    }
+    .sponsor p{
+      margin:0;
+      color:#444;
+    }
+    .project{
+      overflow:hidden;
+      padding:0;
+    }
+    .project .thumb{
+      aspect-ratio:4/3;
+      background:
+        linear-gradient(rgba(6,8,12,.18), rgba(6,8,12,.45)),
+        linear-gradient(135deg, #2f3e5e 0%, #1a8f63 100%);
+    }
+    .project .body{
+      padding:20px;
+    }
+    .project h3{margin:0 0 8px}
+    .project p{margin:0 0 16px; color:var(--muted)}
+    .about-band{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:28px;
+      align-items:center;
+    }
+    .placeholder-photo{
+      min-height:360px;
+      border-radius:22px;
+      border:1px solid var(--line);
+      background:
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.45)),
+        linear-gradient(135deg, #162033 0%, #3a536f 100%);
+      display:grid;
+      place-items:center;
+      color:rgba(255,255,255,.84);
+      font-size:1.1rem;
+      text-align:center;
+      padding:24px;
+    }
+    .contact-box{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:26px;
+      align-items:start;
+    }
+    .contact-lines{
+      display:grid;
+      gap:12px;
+      font-size:1.05rem;
+    }
+    .muted{color:var(--muted)}
+    footer{
+      padding:28px 0 40px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      background:#0a0d13;
+      font-size:.95rem;
+    }
+    @media (max-width: 980px){
+      .hero-inner,.two-col,.about-band,.contact-box{grid-template-columns:1fr}
+      .grid-4{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width: 640px){
+      .nav{align-items:flex-start}
+      .nav-links{display:none}
+      .grid-2,.grid-4{grid-template-columns:1fr}
+      h1{font-size:2.5rem}
+      .hero-card{padding:18px}
+      .contact-inline{font-size:.95rem}
+      .sponsor h3{font-size:1.6rem}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">El Gremio <span>Música</span></div>
+      <nav class="nav-links">
+	<a href="#inicio">Home</a>
+        <a href="#deseo">Deseo Norteño</a>
+        <a href="#patrocinadores">Patrocinadores</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#gremio">El Gremio Música</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+<section id="inicio" class="hero" style="padding-top:0;border-top:none;">
+    <div class="wrap hero-inner">
+      <div>
+        <div class="eyebrow">El Gremio Música presenta</div>
+        <h1>Deseo Norteño</h1>
+        <p class="subhead">
+  Norteño en vivo para eventos que dejan huella.
+</p>
+<p>
+  El Gremio Música: Una plataforma musical pensada para impulsar talento,
+  generar contrataciones y abrir espacio a patrocinadores, DJs, Sonideros y otros proyectos musicales.
+</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://wa.me/524771780606" target="_blank">Contrata Deseo Norteño</a>
+          <a class="btn btn-secondary" href="#proyectos">Ver proyectos promovidos</a>
+        </div>
+        <div class="contact-inline">
+          <div><span>WhatsApp:</span> 477 178 0606</div>
+          <div><span>Correo:</span> ElGremioMusica@gmail.com</div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="mini">Conoce a Deseo Norteño</div>
+        <div class="video-box">
+          <div class="play">▶</div>
+        </div>
+        <div class="video-caption">
+          <div><strong>Videos:</strong><br><span class="muted">Video principal de Deseo Norteño en vivo</span></div>
+          <div><strong>Redes Sociales:</strong><br><span class="muted">YouTube, Facebook El Gremio Música, Facebook Deseo Norteño, Instagram (aquí quiero poner los enlaces para ir directo a esas redes)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="deseo">
+  <div class="wrap about-band">
+    <div>
+
+      <div class="title-with-logo">
+        <h2 class="section-title">Deseo Norteño</h2>
+
+<div class="band-logo">
+
+<svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+
+
+<!-- Letras DN -->
+<text x="18" y="124"
+      font-family="Georgia, serif"
+      font-size="110"
+      fill="#f5f2ea"
+      letter-spacing="-8">D</text>
+
+<text x="92" y="146"
+      font-family="Georgia, serif"
+      font-size="115"
+      fill="#f5f2ea"
+      letter-spacing="-8">N</text>
+
+</svg>
+
+</div>      </div>
+
+      <p class="section-intro">
+        Grupo norteño con enfoque comercial y presencia escénica. La parte superior del sitio está pensada para darle
+        máxima fuerza visual y convertir visitas en contrataciones.
+      </p>
+
+      <div class="card">
+        <h3>Eventos ideales</h3>
+        <ul class="list">
+          <li>Bodas</li>
+          <li>XV años</li>
+          <li>Fiestas privadas</li>
+          <li>Eventos empresariales</li>
+          <li>Ferias y celebraciones masivas</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="placeholder-photo">
+      Fotografías del grupo,<br>
+      en carrusel varias.
+    </div>
+  </div>
+</section>
+
+<style>
+  .title-with-logo{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+
+  .section-title{
+    margin:0;
+    font-size:2.2rem;
+    line-height:1.1;
+  }
+
+  .band-logo{
+    width:190px;
+    max-width:100%;
+    display:flex;
+    align-items:center;
+  }
+
+  .band-logo svg{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
+  .section-intro{
+    margin-top:0;
+  }
+</style>
+
+  <section id="patrocinadores" class="section-alt">
+    <div class="wrap">
+      <h2 class="section-title">Patrocinadores y aliados</h2>
+      <p class="section-intro">
+        En El Gremio Música reconocemos a las marcas y aliados que aportan calidad y profesionalismo al proyecto.
+Los patrocinadores que aparecen aquí forman parte del entorno que hace posible nuestras presentaciones y representan empresas y talleres cuyo trabajo valoramos y recomendamos.
+      </p>
+      <div class="grid-2">
+        <div class="sponsor">
+          <h3>JOLS</h3>
+          <p>Taller laudero de fabricación de bajo quintos y guitarras. (aquí debo poner enlace a sus redes o almenos mostrar como deben buscarlos)</p>
+        </div>
+        <div class="sponsor">
+          <h3>SONIDO PELOS</h3>
+          <p>León, Guanajuato. (aquí debo poner enlace a sus redes o al menos mostrar cómo deben buscarlos)</p>
+<p>Me va a faltar otro recuadro para promocionar a DEIF.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <div class="wrap">
+      <h2 class="section-title">Proyectos promovidos por El Gremio Música</h2>
+      <p class="section-intro">
+        El sitio no solo impulsa a Deseo Norteño. También deja estructura lista para mostrar otros grupos, DJs, servicios de audio
+        o entidades musicales que quieras promover como segundo nivel.
+      </p>
+      <div class="grid-4">
+        <article class="card project">
+          <div class="thumb"></div>
+          <div class="body">
+            <h3>DJ Invitado</h3>
+            <p>Espacio para un DJ aliado o proyecto musical complementario.</p>
+            <a class="btn btn-secondary" href="#">Ver más</a>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="thumb"></div>
+          <div class="body">
+            <h3>Grupo Invitado</h3>
+            <p>Área reservada para otro grupo con el que quieras colaborar o promover.</p>
+            <a class="btn btn-secondary" href="#">Ver más</a>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="thumb"></div>
+          <div class="body">
+            <h3>Audio / Producción</h3>
+            <p>Ideal para promocionar sonido, iluminación o producción profesional.</p>
+            <a class="btn btn-secondary" href="#">Ver más</a>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="thumb"></div>
+          <div class="body">
+            <h3>Entidad musical</h3>
+            <p>Espacio flexible para academia, estudio, patrocinador o promotora aliada.</p>
+            <a class="btn btn-secondary" href="#">Ver más</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="gremio" class="section-alt">
+    <div class="wrap two-col">
+      <div>
+        <h2 class="section-title">El Gremio Música</h2>
+        <p class="section-intro">
+          Somos una organización mexicana para impulsar talento musical, conectar aliados y construir una plataforma musical escalable.
+          
+        </p>
+      </div>
+      <div class="card">
+        <h3>Visión de crecimiento</h3>
+        <ul class="list">
+          <li>Promover grupos musicales propios o aliados.</li>
+          <li>Integrar DJs, audio e iluminación.</li>
+          <li>Dar espacio visible a patrocinadores.</li>
+          <li>Consolidar una identidad profesional bajo un mismo dominio.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap contact-box">
+      <div>
+        <h2 class="section-title">Contrata música en vivo para tu evento</h2>
+        <p class="section-intro">
+          Contactar a El Gremio Música. Contactar a Deseo Norteño
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://wa.me/524771780606" target="_blank">Escribir por WhatsApp</a>
+          <a class="btn btn-secondary" href="mailto:elGremioMusica@gmail.com">Enviar correo</a>
+        </div>
+      </div>
+      <div class="card contact-lines">
+        <div><strong>WhatsApp:</strong> <span class="muted">477 178 0606</span></div>
+        <div><strong>Correo:</strong> <span class="muted">elGremioMusica@gmail.com</span></div>
+        <div><strong>Marca principal:</strong> <span class="muted">El Gremio Música</span></div>
+        <div><strong>Proyecto destacado:</strong> <span class="muted">Deseo Norteño</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      Maqueta HTML inicial para revisión local. Próximos pasos recomendados: sustituir fondos por fotos reales, insertar video, agregar redes sociales y definir textos finales de venta.
+    </div>
+  </footer>
+</body>
+</html>
