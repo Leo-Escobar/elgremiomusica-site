@@ -4,338 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>El Gremio Música | Deseo Norteño</title>
-  <style>
-    :root{
-      --bg:#0b0d12;
-      --bg-soft:#121722;
-      --card:#171d29;
-      --gold:#d8a84d;
-      --text:#f5f2ea;
-      --muted:#c9cfdb;
-      --line:rgba(255,255,255,.10);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.5;
-    }
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(1180px, 92vw); margin:auto}
-    .hero{
-      min-height:100vh;
-      position:relative;
-      overflow:hidden;
-      background:
-        linear-gradient(rgba(4,8,14,.55), rgba(4,8,14,.88)),
-        radial-gradient(circle at top, rgba(34,72,116,.55), transparent 40%),
-        radial-gradient(circle at 80% 20%, rgba(216,168,77,.16), transparent 22%),
-        linear-gradient(135deg, #09111d 0%, #162033 48%, #0b0d12 100%);
-    }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 10% 90%, rgba(255,255,255,.08) 0 2px, transparent 3px) 0 0/120px 120px,
-        radial-gradient(circle at 90% 15%, rgba(255,255,255,.06) 0 2px, transparent 3px) 0 0/160px 160px;
-      opacity:.35;
-      pointer-events:none;
-    }
-    header{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter: blur(10px);
-      background:rgba(8,10,14,.65);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      padding:14px 0;
-    }
-    .brand{
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size:.95rem;
-    }
-    .brand span{color:var(--gold)}
-    .nav-links{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-      color:var(--muted);
-      font-size:.95rem;
-    }
-    .hero-inner{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:40px;
-      align-items:center;
-      min-height:calc(100vh - 72px);
-      padding:48px 0 56px;
-    }
-    .eyebrow{
-      display:inline-block;
-      padding:8px 12px;
-      border:1px solid rgba(216,168,77,.35);
-      background:rgba(216,168,77,.08);
-      border-radius:999px;
-      color:#f0cf89;
-      font-size:.85rem;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      margin-bottom:18px;
-    }
-    h1{
-      margin:0 0 10px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.4rem, 7vw, 5rem);
-      line-height:.96;
-      letter-spacing:.01em;
-    }
-    .subhead{
-      font-size: clamp(1rem, 1.8vw, 1.35rem);
-      color:var(--muted);
-      max-width:700px;
-      margin:18px 0 28px;
-    }
-    .cta-row{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-bottom:26px;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:14px 22px;
-      border-radius:12px;
-      font-weight:700;
-      transition:.2s ease;
-      border:1px solid transparent;
-    }
-    .btn-primary{
-      background:var(--gold);
-      color:#1b1407;
-      box-shadow:0 8px 26px rgba(216,168,77,.20);
-    }
-    .btn-secondary{
-      background:transparent;
-      color:var(--text);
-      border-color:rgba(255,255,255,.18);
-    }
-    .contact-inline{
-      display:flex;
-      flex-wrap:wrap;
-      gap:18px;
-      color:var(--text);
-      font-size:1rem;
-    }
-    .contact-inline span{
-      color:var(--muted);
-      margin-right:6px;
-    }
-    .hero-card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid var(--line);
-      border-radius:24px;
-      padding:24px;
-      box-shadow:0 30px 60px rgba(0,0,0,.28);
-    }
-    .hero-card .mini{
-      color:#f0cf89;
-      text-transform:uppercase;
-      letter-spacing:.09em;
-      font-size:.85rem;
-      margin-bottom:14px;
-    }
-    .video-box{
-      aspect-ratio:9/16;
-      max-width:360px;
-      margin:0 auto;
-      border-radius:18px;
-      background:
-        linear-gradient(rgba(9,13,19,.25), rgba(9,13,19,.55)),
-        linear-gradient(135deg, #1b2a42 0%, #244b73 40%, #111725 100%);
-      border:1px solid rgba(255,255,255,.08);
-      position:relative;
-      overflow:hidden;
-    }
-    .video-box iframe{
-      width:100%;
-      height:100%;
-      border:0;
-      display:block;
-    }
-    .video-caption{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      margin-top:14px;
-      color:var(--muted);
-      font-size:.95rem;
-    }
-    section{
-      padding:84px 0;
-      border-top:1px solid var(--line);
-      background:var(--bg);
-    }
-    .section-alt{background:var(--bg-soft)}
-    .section-title{
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin:0 0 16px;
-    }
-    .section-intro{
-      color:var(--muted);
-      max-width:800px;
-      margin:0 0 34px;
-      font-size:1.05rem;
-    }
-    .two-col{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:34px;
-      align-items:start;
-    }
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:20px;
-      padding:24px;
-    }
-    .list{
-      margin:14px 0 0;
-      padding-left:20px;
-    }
-    .list li{margin:10px 0}
-    .grid-2{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:22px;
-    }
-    .grid-4{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:22px;
-    }
-    .sponsor{
-      text-align:center;
-      padding:28px 18px;
-      background:#fff;
-      color:#121212;
-      border-radius:18px;
-      min-height:180px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      gap:10px;
-    }
-    .sponsor h3{
-      margin:0;
-      font-size:2rem;
-      letter-spacing:.06em;
-    }
-    .sponsor p{
-      margin:0;
-      color:#444;
-    }
-    .project{
-      overflow:hidden;
-      padding:0;
-    }
-    .project .thumb{
-      aspect-ratio:4/3;
-      background:
-        linear-gradient(rgba(6,8,12,.18), rgba(6,8,12,.45)),
-        linear-gradient(135deg, #2f3e5e 0%, #1a8f63 100%);
-    }
-    .project .body{
-      padding:20px;
-    }
-    .project h3{margin:0 0 8px}
-    .project p{margin:0 0 16px; color:var(--muted)}
-    .about-band{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:28px;
-      align-items:center;
-    }
-    .title-with-logo{
-      display:flex;
-      align-items:center;
-      justify-content:flex-start;
-      gap:18px;
-      flex-wrap:wrap;
-      margin-bottom:14px;
-    }
-    .band-logo{
-      width:190px;
-      max-width:100%;
-      display:flex;
-      align-items:center;
-    }
-    .band-logo svg{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-    .placeholder-photo{
-      min-height:360px;
-      border-radius:22px;
-      border:1px solid var(--line);
-      background:
-        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.45)),
-        linear-gradient(135deg, #162033 0%, #3a536f 100%);
-      display:grid;
-      place-items:center;
-      color:rgba(255,255,255,.84);
-      font-size:1.1rem;
-      text-align:center;
-      padding:24px;
-    }
-    .contact-box{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:26px;
-      align-items:start;
-    }
-    .contact-lines{
-      display:grid;
-      gap:12px;
-      font-size:1.05rem;
-    }
-    .muted{color:var(--muted)}
-    footer{
-      padding:28px 0 40px;
-      color:var(--muted);
-      border-top:1px solid var(--line);
-      background:#0a0d13;
-      font-size:.95rem;
-    }
-    @media (max-width: 980px){
-      .hero-inner,.two-col,.about-band,.contact-box{grid-template-columns:1fr}
-      .grid-4{grid-template-columns:repeat(2,1fr)}
-    }
-    @media (max-width: 640px){
-      .nav{align-items:flex-start}
-      .nav-links{display:none}
-      .grid-2,.grid-4{grid-template-columns:1fr}
-      h1{font-size:2.5rem}
-      .hero-card{padding:18px}
-      .contact-inline{font-size:.95rem}
-      .sponsor h3{font-size:1.6rem}
-    }
-  </style>
+  <link rel="icon" type="image/jpeg" href="assets/images/deseo-norteno-logo.jpeg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
   <header>
@@ -386,7 +56,12 @@
         </div>
         <div class="video-caption">
           <div><strong>Videos:</strong><br><span class="muted">Video principal de Deseo Norteño en vivo</span></div>
-          <div><strong>Redes Sociales:</strong><br><span class="muted">YouTube, Facebook El Gremio Música, Facebook Deseo Norteño, Instagram</span></div>
+          <div>
+            <strong>Redes Sociales:</strong>
+            <div class="social-links">
+              <a class="social-link" href="https://youtube.com/@elgremiomusica" target="_blank" rel="noopener noreferrer">YouTube El Gremio Música</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -396,24 +71,7 @@
   <div class="wrap about-band">
     <div>
 
-      <div class="title-with-logo">
-        <h2 class="section-title">Deseo Norteño</h2>
-
-        <div class="band-logo">
-          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
-            <text x="18" y="124"
-                  font-family="Georgia, serif"
-                  font-size="110"
-                  fill="#f5f2ea"
-                  letter-spacing="-8">D</text>
-            <text x="92" y="146"
-                  font-family="Georgia, serif"
-                  font-size="115"
-                  fill="#f5f2ea"
-                  letter-spacing="-8">N</text>
-          </svg>
-        </div>
-      </div>
+      <h2 class="section-title">Deseo Norteño</h2>
 
       <p class="section-intro">
         Grupo norteño con enfoque comercial, presencia escénica sólida y un repertorio diseñado para conectar con el público en eventos sociales y privados. Deseo Norteño combina la esencia tradicional del norteño con una interpretación energética y profesional, creando un ambiente auténtico que anima cada evento. Su propuesta musical busca no solo entretener, sino generar momentos memorables mediante una ejecución sólida y una interacción constante con el público.
@@ -432,9 +90,69 @@
 
     </div>
 
-    <div class="placeholder-photo">
-      Fotografías del grupo,<br>
-      en carrusel varias.
+    <div class="photo-carousel" data-carousel>
+      <div class="carousel-dots">
+        <button class="carousel-dot active" type="button" aria-label="Ver foto 1"></button>
+        <button class="carousel-dot" type="button" aria-label="Ver foto 2"></button>
+        <button class="carousel-dot" type="button" aria-label="Ver foto 3"></button>
+        <button class="carousel-dot" type="button" aria-label="Ver foto 4"></button>
+        <button class="carousel-dot" type="button" aria-label="Ver foto 5"></button>
+        <button class="carousel-dot" type="button" aria-label="Ver foto 6"></button>
+        <button class="carousel-dot" type="button" aria-label="Ver foto 7"></button>
+        <button class="carousel-dot" type="button" aria-label="Ver foto 8"></button>
+        <button class="carousel-dot" type="button" aria-label="Ver foto 9"></button>
+        <button class="carousel-dot" type="button" aria-label="Ver foto 10"></button>
+        <button class="carousel-dot" type="button" aria-label="Ver foto 11"></button>
+        <button class="carousel-dot" type="button" aria-label="Ver foto 12"></button>
+      </div>
+      <div class="carousel-track">
+        <figure class="carousel-slide active">
+          <img src="assets/images/gallery/deseo-norteno-01.jpeg" alt="Deseo Norteño en presentación en vivo" />
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/images/gallery/deseo-norteno-02.jpeg" alt="Deseo Norteño durante evento social" />
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/images/gallery/deseo-norteno-03.jpeg" alt="Integrantes de Deseo Norteño en escenario" />
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/images/gallery/deseo-norteno-04.jpeg" alt="Deseo Norteño tocando en vivo" />
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/images/gallery/deseo-norteno-05.jpeg" alt="Show en vivo de Deseo Norteño" />
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/images/gallery/deseo-norteno-06.jpeg" alt="Deseo Norteño en evento nocturno" />
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/images/gallery/deseo-norteno-07.jpeg" alt="Grupo Deseo Norteño en presentación" />
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/images/gallery/deseo-norteno-08.jpeg" alt="Escenario de Deseo Norteño" />
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/images/gallery/deseo-norteno-09.jpeg" alt="Deseo Norteño animando al público" />
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/images/gallery/deseo-norteno-10.jpeg" alt="Presentación musical de Deseo Norteño" />
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/images/gallery/deseo-norteno-11.jpeg" alt="Deseo Norteño en fotografía promocional en vivo" />
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/images/gallery/deseo-norteno-12.jpeg" alt="Deseo Norteño durante actuación en evento" />
+        </figure>
+      </div>
+      <div class="carousel-overlay">
+        <div class="carousel-copy">
+          <strong>Fotografías del grupo</strong>
+          <span>Momentos reales de Deseo Norteño en escenario y eventos.</span>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" type="button" data-carousel-prev aria-label="Foto anterior">‹</button>
+          <button class="carousel-btn" type="button" data-carousel-next aria-label="Foto siguiente">›</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -540,6 +258,7 @@ Los patrocinadores que aparecen aquí forman parte del entorno que hace posible 
       <div class="card contact-lines">
         <div><strong>WhatsApp:</strong> <span class="muted">477 178 0606</span></div>
         <div><strong>Correo:</strong> <span class="muted">elGremioMusica@gmail.com</span></div>
+        <div><strong>YouTube:</strong> <a class="contact-link" href="https://youtube.com/@elgremiomusica" target="_blank" rel="noopener noreferrer">@elgremiomusica</a></div>
         <div><strong>Marca principal:</strong> <span class="muted">El Gremio Música</span></div>
         <div><strong>Proyecto destacado:</strong> <span class="muted">Deseo Norteño</span></div>
       </div>
@@ -551,5 +270,61 @@ Los patrocinadores que aparecen aquí forman parte del entorno que hace posible 
       Maqueta HTML inicial para revisión local. Próximos pasos recomendados: sustituir fondos por fotos reales, insertar video, agregar redes sociales y definir textos finales de venta.
     </div>
   </footer>
+  <script>
+    const carousel = document.querySelector("[data-carousel]");
+
+    if (carousel) {
+      const slides = Array.from(carousel.querySelectorAll(".carousel-slide"));
+      const dots = Array.from(carousel.querySelectorAll(".carousel-dot"));
+      const prevButton = carousel.querySelector("[data-carousel-prev]");
+      const nextButton = carousel.querySelector("[data-carousel-next]");
+      let currentIndex = 0;
+      let autoPlayId;
+
+      function renderSlide(index) {
+        slides.forEach((slide, slideIndex) => {
+          slide.classList.toggle("active", slideIndex === index);
+        });
+
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle("active", dotIndex === index);
+        });
+
+        currentIndex = index;
+      }
+
+      function showNextSlide() {
+        renderSlide((currentIndex + 1) % slides.length);
+      }
+
+      function showPreviousSlide() {
+        renderSlide((currentIndex - 1 + slides.length) % slides.length);
+      }
+
+      function restartAutoPlay() {
+        window.clearInterval(autoPlayId);
+        autoPlayId = window.setInterval(showNextSlide, 4500);
+      }
+
+      nextButton.addEventListener("click", () => {
+        showNextSlide();
+        restartAutoPlay();
+      });
+
+      prevButton.addEventListener("click", () => {
+        showPreviousSlide();
+        restartAutoPlay();
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          renderSlide(index);
+          restartAutoPlay();
+        });
+      });
+
+      restartAutoPlay();
+    }
+  </script>
 </body>
 </html>
