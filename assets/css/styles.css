@@ -382,6 +382,63 @@ section{
 }
 .project h3{margin:0 0 8px}
 .project p{margin:0 0 16px; color:var(--muted)}
+.project-daiv{
+  background:var(--card);
+  color:var(--text);
+  border-color:var(--line);
+  box-shadow:0 24px 44px rgba(0,0,0,.22);
+}
+.project-daiv .thumb{
+  display:block;
+  padding:0;
+  background:#0e131b;
+  border-bottom:1px solid var(--line);
+}
+.project-daiv .body{
+  display:grid;
+  gap:10px;
+  padding:24px 20px 22px;
+}
+.project-daiv h3{
+  margin:0;
+  color:var(--text);
+  font-size:1.85rem;
+  letter-spacing:.08em;
+}
+.project-daiv p{
+  margin:0;
+  color:var(--muted);
+}
+.project-daiv .project-role{
+  font-size:1rem;
+  font-weight:600;
+  color:#f0cf89;
+}
+.project-daiv .project-label{
+  font-weight:700;
+  color:var(--text);
+}
+.project-daiv .project-description{
+  line-height:1.7;
+}
+.project-daiv .project-link{
+  justify-self:start;
+  margin-top:4px;
+}
+.project-daiv .btn-secondary{
+  color:var(--text);
+  border-color:rgba(255,255,255,.18);
+  background:transparent;
+}
+.project-daiv .btn-secondary:hover{
+  background:rgba(255,255,255,.05);
+  border-color:rgba(216,168,77,.35);
+}
+.project-logo{
+  display:block;
+  width:100%;
+  height:auto;
+}
 .about-band{
   display:grid;
   grid-template-columns:1.05fr .95fr;
@@ -561,6 +618,18 @@ footer{
   border-top:1px solid var(--line);
   background:#0a0d13;
   font-size:.95rem;
+}
+footer p{
+  margin:0;
+}
+.footer-title{
+  margin-bottom:10px;
+  color:var(--text);
+  font-weight:700;
+  letter-spacing:.08em;
+}
+footer p + p{
+  margin-top:8px;
 }
 @media (max-width: 980px){
   .hero-inner,.two-col,.about-band,.contact-box{grid-template-columns:1fr}
